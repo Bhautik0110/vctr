@@ -42,7 +42,7 @@ func main() {
 
 	for range ticker.C {
 		curTime := time.Now().Add(time.Hour * 1)
-		timeLocal = curTime.AddDate(0, 0, -1)
+		timeLocal = curTime.AddDate(0, 0, 0)
 
 		ip = weightedIPVersion(cfg.IPv4Percent)
 		httpMethod = weightedHTTPMethod(cfg.PercentageGet, cfg.PercentagePost, cfg.PercentagePut, cfg.PercentagePatch, cfg.PercentageDelete)
@@ -52,7 +52,7 @@ func main() {
 		userAgent = gofakeit.UserAgent()
 		requestTime := gofakeit.Float32Range(-1, 60)
 
-		fmt.Printf("%s - - [%s] \"%s http://%s/%s %s\" %v %v \"%s\" \"%s\" %f \n",
+		fmt.Printf("%s - - [%s] \"%s http://%s/%s %s\" %v %v \"%s\" \"%s\" %f\n",
 			ip,
 			timeLocal.Format("02/Jan/2006:15:04:05 -0700"),
 			httpMethod,
